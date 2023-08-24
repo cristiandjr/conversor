@@ -53,17 +53,17 @@ const MapBm = () => {
       <amd:defaultValue>${values[5] === undefined ? "string" : values[5]}</amd:defaultValue>
     </amd:getValueWithDefault>`;
 
-    let resultSelect = `select * from ESB_MAP where group_map='{values[0]}' and
-    source_system='{values[1]}' and source_attr='{values[2]}' and
-    source_value='{values[3]}' and target_system='
-    {values[4]}' and target_attr='INSERTE VALOR CORRECTO DE
-    target_attr';`
+    let resultSelect = `select * from ESB_MAP where group_map=${values[0]} and
+      source_system=${values[1]} and source_attr=${values[2]} and
+      source_value=${values[3]} and target_system='
+      ${values[4]} and target_attr='INSERTE VALOR CORRECTO DE
+      target_attr';`
 
     let resultInsert = `insert into ESB_MAP (ID, SOURCE_SYSTEM, SOURCE_ATTR,
       SOURCE_VALUE, TARGET_SYSTEM, TARGET_ATTR, TARGET_VALUE,
-      GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,'${values[1]}
-      ','${values[2]}','${values[3]}','
-      {values[4]}','INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
+      GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,${values[1]}
+      ,${values[2]},${values[3]},
+      ${values[4]},'INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
       DE TARGET_VALUE','${values[0]}',to_date('${fechaFormateada}
       ','DD/MM/RRRR'));`
 
@@ -106,7 +106,7 @@ const MapBm = () => {
               </button>
             </div>
             <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300">
+              <pre id="code" className="text-gray-300 whitespace-pre-line">
                 <code>
                   {resultSelect}
                 </code>
@@ -129,7 +129,7 @@ const MapBm = () => {
               </button>
             </div>
             <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300">
+              <pre id="code" className="text-gray-300 whitespace-pre-line">
                 <code>
                   {resultInsert}
                 </code>
