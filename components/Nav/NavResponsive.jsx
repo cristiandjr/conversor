@@ -1,3 +1,4 @@
+import Link from "next/link"
 const NavResponsive = () => {
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -67,7 +68,7 @@ const NavResponsive = () => {
                     <ul role="list" className="-mx-2 space-y-1">
                       {navigation.map((item) => (
                         <li key={item.name}>
-                          <a
+                          <Link
                             href={item.href}
                             className={classNames(
                               item.current
@@ -86,7 +87,7 @@ const NavResponsive = () => {
                               aria-hidden="true"
                             />
                             {item.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
