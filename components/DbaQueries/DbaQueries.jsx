@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { handleClipboard } from "@/utils/scripts/clipboard";
 
 const DbaQueries = () => {
   const [sqlResult, setSqlResult] = useState("");
@@ -27,18 +28,6 @@ const DbaQueries = () => {
     );
     modifiedQuery = modifiedQuery.replace(/'\d+'(?=\s*,)/, `${ID}`);
     return modifiedQuery;
-  };
-
-  const handleClipboard = (textCopy) => {
-    console.log("dentro de la funcionh: ", textCopy);
-    navigator.clipboard.writeText(textCopy).then(
-      () => {
-        console.log("troden");
-      },
-      () => {
-        console.log("error");
-      }
-    );
   };
 
   return (

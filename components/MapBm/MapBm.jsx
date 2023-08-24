@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { handleClipboard } from "@/utils/scripts/clipboard";
+
 
 const MapBm = () => {
   const [result, setResult] = useState("");
@@ -29,17 +31,7 @@ const MapBm = () => {
     const anio = fechaActual.getFullYear();
     const fechaFormateada = `${dia}/${mes}/${anio}`;
 
-    const handleClipboard = (textCopy) => {
-      console.log("dentro de la funcionh: ", textCopy);
-      navigator.clipboard.writeText(textCopy).then(
-        () => {
-          console.log("troden");
-        },
-        () => {
-          console.log("error");
-        }
-      );
-    };
+    // results finish
 
     let resultMapBm = `<amd:getValueWithDefault xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs">
       <amd:source_system>${values[1]}</amd:source_system>
@@ -47,9 +39,7 @@ const MapBm = () => {
       <amd:target_system>${values[4]}</amd:target_system>
       <amd:source_value>${values[3]}</amd:source_value>
       <amd:group>${values[0]}</amd:group>
-      <amd:defaultValue>${
-        values[5] === undefined ? "string" : values[5]
-      }</amd:defaultValue>
+      <amd:defaultValue>${values[5] === undefined ? "string" : values[5]}</amd:defaultValue>
     </amd:getValueWithDefault>`;
 
     let resultSelect = `select * from ESB_MAP where group_map='${values[0]}' and
