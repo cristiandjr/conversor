@@ -30,46 +30,45 @@ const MapBm = () => {
     const fechaFormateada = `${dia}/${mes}/${anio}`;
 
     const handleClipboard = (textCopy) => {
-      console.log('dentro de la funcionh: ', textCopy)
+      console.log("dentro de la funcionh: ", textCopy);
       navigator.clipboard.writeText(textCopy).then(
         () => {
-          console.log('troden')
-
+          console.log("troden");
         },
         () => {
-          console.log('error')
-        },
+          console.log("error");
+        }
       );
-    }
+    };
 
-
-    let resultMapBm = 
-    `<amd:getValueWithDefault xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs">
+    let resultMapBm = `<amd:getValueWithDefault xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs">
       <amd:source_system>${values[1]}</amd:source_system>
       <amd:source_attr>${values[2]}</amd:source_attr>
       <amd:target_system>${values[4]}</amd:target_system>
       <amd:source_value>${values[3]}</amd:source_value>
       <amd:group>${values[0]}</amd:group>
-      <amd:defaultValue>${values[5] === undefined ? "string" : values[5]}</amd:defaultValue>
+      <amd:defaultValue>${
+        values[5] === undefined ? "string" : values[5]
+      }</amd:defaultValue>
     </amd:getValueWithDefault>`;
 
-    let resultSelect = `select * from ESB_MAP where group_map=${values[0]} and
-      source_system=${values[1]} and source_attr=${values[2]} and
-      source_value=${values[3]} and target_system='
-      ${values[4]} and target_attr='INSERTE VALOR CORRECTO DE
-      target_attr';`
+    let resultSelect = `select * from ESB_MAP where group_map='${values[0]}' and
+      source_system='${values[1]}' and source_attr='${values[2]}' and
+      source_value='${values[3]}' and target_system='
+      '${values[4]}' and target_attr='INSERTE VALOR CORRECTO DE
+      target_attr';`;
 
     let resultInsert = `insert into ESB_MAP (ID, SOURCE_SYSTEM, SOURCE_ATTR,
       SOURCE_VALUE, TARGET_SYSTEM, TARGET_ATTR, TARGET_VALUE,
-      GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,${values[1]}
-      ,${values[2]},${values[3]},
-      ${values[4]},'INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
+      GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,'${values[1]}'
+      ,'${values[2]}','${values[3]}',
+      '${values[4]}','INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
       DE TARGET_VALUE','${values[0]}',to_date('${fechaFormateada}
-      ','DD/MM/RRRR'));`
+      ','DD/MM/RRRR'));`;
 
     setResult(
       <div className="resultado">
-        {/** mapBm */}  
+        {/** mapBm */}
         <div className="relative w-full max-w-6xl mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
@@ -84,15 +83,13 @@ const MapBm = () => {
             </div>
             <div className="overflow-x-auto">
               <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>
-                  {resultMapBm}
-                </code>
+                <code>{resultMapBm}</code>
               </pre>
             </div>
           </div>
         </div>
-        
-        {/** select */}  
+
+        {/** select */}
         <div className="relative w-full max-w-6xl mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
@@ -107,15 +104,13 @@ const MapBm = () => {
             </div>
             <div className="overflow-x-auto">
               <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>
-                  {resultSelect}
-                </code>
+                <code>{resultSelect}</code>
               </pre>
             </div>
           </div>
         </div>
 
-        {/** insert */}          
+        {/** insert */}
         <div className="relative w-full max-w-6xl mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
@@ -130,17 +125,13 @@ const MapBm = () => {
             </div>
             <div className="overflow-x-auto">
               <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>
-                  {resultInsert}
-                </code>
+                <code>{resultInsert}</code>
               </pre>
             </div>
           </div>
         </div>
       </div>
     );
-
-
   };
 
   return (
@@ -153,15 +144,27 @@ const MapBm = () => {
       <div className="grid grid-cols-1 gap-2">
         <form onSubmit={handleSubmit} id="formulario" method="post">
           <div>
-            <p
-              htmlFor="comment"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Ingrese mapBm 
-              <span className="block font-bold">Example:</span>
-              <span className="block">mapBm:getValueWithDefault("AVERIAS", "CRM", "XA_GUARANTEE", 'config_item', "TOA", "0")</span>
-              <span className="block">mapBm:getValue('GENERAL','Portability','portabilityStatus', 'notifyPortInTimeWindow', 'AMDOCS')</span>
-            </p>
+            <div className="relative w-full max-w-6xl mt-2">
+              <div className="bg-black text-white p-4 rounded-md">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-gray-400">Examples Code:</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <pre id="code" className="text-gray-300 whitespace-pre-line">
+                    <code>
+                      <span className="block">
+                        mapBm:getValueWithDefault("AVERIAS", "CRM",
+                        "XA_GUARANTEE", 'config_item', "TOA", "0")
+                      </span>
+                      <span className="block">
+                        mapBm:getValue('GENERAL','Portability','portabilityStatus',
+                        'notifyPortInTimeWindow', 'AMDOCS')
+                      </span>
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
             <div className="mt-2">
               <textarea
                 rows={4}
