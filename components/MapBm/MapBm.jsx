@@ -44,7 +44,7 @@ const MapBm = () => {
 
     let resultSelect = `select * from ESB_MAP where group_map='${values[0]}' and
       source_system='${values[1]}' and source_attr='${values[2]}' and
-      source_value='${values[3]}' and target_system='
+      source_value='${values[3]}' and target_system=
       '${values[4]}' and target_attr='INSERTE VALOR CORRECTO DE
       target_attr';`;
 
