@@ -182,7 +182,6 @@ const MapBm = () => {
             Generar
           </button>
         </form>
-
         <div id="resultado">{result}</div>
       </div>
     </section>
