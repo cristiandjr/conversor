@@ -1,11 +1,17 @@
 "use client";
 import { useState } from "react";
 import { handleClipboard } from "@/utils/scripts/clipboard";
+import { useForm } from "react-hook-form";
 
 const DbaQueries = () => {
   const [sqlResult, setSqlResult] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const generateSQLQueries = () => {
+  const onSubmit = () => {
     const sqlQueriesTextarea = document.getElementById("sqlQueries");
     const sqlQueries = sqlQueriesTextarea.value.split(";");
 
@@ -32,7 +38,11 @@ const DbaQueries = () => {
 
   return (
     <section>
-      <h2>DBA Conversor</h2>
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+          DBA Conversor
+        </span>
+      </h1>
       <div className="relative w-full max-w-6xl mt-2 mb-2">
         <div className="bg-black text-white p-4 rounded-md">
           <div className="flex justify-between items-center mb-2">
@@ -52,17 +62,36 @@ const DbaQueries = () => {
           </div>
         </div>
       </div>
-      <textarea
-        id="sqlQueries"
-        rows={4}
-        className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-      />
-      <button
-        onClick={generateSQLQueries}
-        className="mt-2 p-3 bg-blue-500 rounded-sm transition hover:bg-blue-400"
-      >
-        Generar
-      </button>
+      <form method="post" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <textarea
+            id="sqlQueries"
+            {...register("sqlQueries", {
+              required: {
+                value: true,
+                message: "Campo requerido",
+              },
+              minLength: {
+                value: 15,
+                message: "Minimo como estan los campos de example",
+              },
+            })}
+            rows={4}
+            className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+          {errors.sqlQueries && (
+            <span className="text-red-600 font-bold">
+              {errors.sqlQueries.message}
+            </span>
+          )}
+        </div>
+        <button
+          type="submit"
+          className="mt-2 p-2 border-2 font-semibold tracking-widest border-black rounded-sm ease-in duration-300 hover:bg-black hover:text-white"
+        >
+          Generar
+        </button>
+      </form>
       {sqlResult && (
         <div id="resultado">
           <div className="relative w-full max-w-6xl mt-2">

@@ -1,27 +1,30 @@
 "use client";
 import { useState } from "react";
 import { handleClipboard } from "@/utils/scripts/clipboard";
-
+import { useForm } from "react-hook-form";
 
 const MapBm = () => {
   const [result, setResult] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = async (data) => {
     const mapBm = document.getElementById("mapBm").value;
     //console.log("mapBm original", mapBm);
 
-    if (mapBm.includes("getValueWithDefault")) {
-      console.log(
-        "Encontrado: getValueWithDefault",
-        mapBm.includes("getValueWithDefault")
-      );
-    } else if (mapBm.includes("getValue")) {
-      console.log("Encontrado: getValue", mapBm.includes("getValue"));
-    } else {
-      console.log("Texto no encontrado.");
-    }
+    //  if (mapBm.includes("getValueWithDefault")) {
+    //    console.log(
+    //      "Encontrado: getValueWithDefault",
+    //      mapBm.includes("getValueWithDefault")
+    //    );
+    //  } else if (mapBm.includes("getValue")) {
+    //    console.log("Encontrado: getValue", mapBm.includes("getValue"));
+    //  } else {
+    //    console.log("Texto no encontrado.");
+    //  }
 
     const matches = mapBm.match(/"(.*?)"|'(.*?)'/g);
     const values = matches.map((match) => match.replace(/["']/g, ""));
@@ -32,14 +35,15 @@ const MapBm = () => {
     const fechaFormateada = `${dia}/${mes}/${anio}`;
 
     // results finish
-
     let resultMapBm = `<amd:getValueWithDefault xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs">
       <amd:source_system>${values[1]}</amd:source_system>
       <amd:source_attr>${values[2]}</amd:source_attr>
       <amd:target_system>${values[4]}</amd:target_system>
       <amd:source_value>${values[3]}</amd:source_value>
       <amd:group>${values[0]}</amd:group>
-      <amd:defaultValue>${values[5] === undefined ? "string" : values[5]}</amd:defaultValue>
+      <amd:defaultValue>${
+        values[5] === undefined ? "string" : values[5]
+      }</amd:defaultValue>
     </amd:getValueWithDefault>`;
 
     let resultSelect = `select * from ESB_MAP where group_map='${values[0]}' and
@@ -132,7 +136,7 @@ const MapBm = () => {
         </span>
       </h1>
       <div className="grid grid-cols-1 gap-2">
-        <form onSubmit={handleSubmit} id="formulario" method="post">
+        <form onSubmit={handleSubmit(onSubmit)} id="formulario" method="post">
           <div>
             <div className="relative w-full max-w-6xl mt-2">
               <div className="bg-black text-white p-4 rounded-md">
@@ -159,15 +163,30 @@ const MapBm = () => {
               <textarea
                 rows={4}
                 name="mapBm"
+                {...register("mapBm", {
+                  required: {
+                    value: true,
+                    message: "Campo requerido",
+                  },
+                  minLength: {
+                    value: 15,
+                    message: "Minimo como estan los campos de example",
+                  },
+                })}
                 id="mapBm"
                 className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 defaultValue={""}
               />
+              {errors.mapBm && (
+                <span className="text-red-600 font-bold">
+                  {errors.mapBm.message}
+                </span>
+              )}
             </div>
           </div>
           <button
             type="submit"
-            className="mt-2 p-3 bg-blue-500 rounded-sm transition hover:bg-blue-400"
+            className="mt-2 p-2 border-2 font-semibold tracking-widest border-black rounded-sm ease-in duration-300 hover:bg-black hover:text-white"
           >
             Generar
           </button>
