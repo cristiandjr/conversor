@@ -29,23 +29,43 @@ const MapBm = () => {
     const anio = fechaActual.getFullYear();
     const fechaFormateada = `${dia}/${mes}/${anio}`;
 
-    const handleClipboard = (content) => {
-      console.log('hola')
-      navigator.clipboard.writeText(content).then(
+    const handleClipboard = (textCopy) => {
+      console.log('dentro de la funcionh: ', textCopy)
+      navigator.clipboard.writeText(textCopy).then(
         () => {
-          /* clipboard successfully set */
           console.log('troden')
 
         },
         () => {
-          /* clipboard write failed */
           console.log('error')
-
         },
       );
     }
 
-    let copy
+
+    let resultMapBm = 
+    `<amd:getValueWithDefault xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs">
+      <amd:source_system>${values[1]}</amd:source_system>
+      <amd:source_attr>${values[2]}</amd:source_attr>
+      <amd:target_system>${values[4]}</amd:target_system>
+      <amd:source_value>${values[3]}</amd:source_value>
+      <amd:group>${values[0]}</amd:group>
+      <amd:defaultValue>${values[5] === undefined ? "string" : values[5]}</amd:defaultValue>
+    </amd:getValueWithDefault>`;
+
+    let resultSelect = `select * from ESB_MAP where group_map='{values[0]}' and
+    source_system='{values[1]}' and source_attr='{values[2]}' and
+    source_value='{values[3]}' and target_system='
+    {values[4]}' and target_attr='INSERTE VALOR CORRECTO DE
+    target_attr';`
+
+    let resultInsert = `insert into ESB_MAP (ID, SOURCE_SYSTEM, SOURCE_ATTR,
+      SOURCE_VALUE, TARGET_SYSTEM, TARGET_ATTR, TARGET_VALUE,
+      GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,'${values[1]}
+      ','${values[2]}','${values[3]}','
+      {values[4]}','INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
+      DE TARGET_VALUE','${values[0]}',to_date('${fechaFormateada}
+      ','DD/MM/RRRR'));`
 
     setResult(
       <div className="resultado">
@@ -57,32 +77,15 @@ const MapBm = () => {
               <button
                 className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
                 data-clipboard-target="#code"
-                onClick={() => handleClipboard('prueba 123')}
+                onClick={() => handleClipboard(resultMapBm)}
               >
                 Copy
               </button>
             </div>
             <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300">
+              <pre id="code" className="text-gray-300 whitespace-pre-line">
                 <code>
-                  &lt;amd:getValueWithDefault
-                  xmlns:amd="http://www.movistar.com.ar/ws/schema/amdocs"&gt;{" "}
-                  <br />
-                  &lt;amd:source_system&gt;{values[1]}
-                  &lt;/amd:source_system&gt; <br />
-                  &lt;amd:source_attr&gt;{
-                    values[2]
-                  }&lt;/amd:source_attr&gt; <br />
-                  &lt;amd:target_system&gt;{values[4]}
-                  &lt;/amd:target_system&gt; <br />
-                  &lt;amd:source_value&gt;{
-                    values[3]
-                  }&lt;/amd:source_value&gt; <br />
-                  &lt;amd:group&gt;{values[0]}&lt;/amd:group&gt; <br />
-                  &lt;amd:defaultValue&gt;
-                  {values[5] === undefined ? "string" : values[5]}
-                  &lt;/amd:defaultValue&gt; <br />
-                  &lt;/amd:getValueWithDefault&gt; <br />
+                  {resultMapBm}
                 </code>
               </pre>
             </div>
@@ -97,6 +100,7 @@ const MapBm = () => {
               <button
                 className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
                 data-clipboard-target="#code"
+                onClick={() => handleClipboard(resultSelect)}
               >
                 Copy
               </button>
@@ -104,11 +108,7 @@ const MapBm = () => {
             <div className="overflow-x-auto">
               <pre id="code" className="text-gray-300">
                 <code>
-                  select * from ESB_MAP where group_map='{values[0]}' and
-                  source_system='{values[1]}' and source_attr='{values[2]}' and
-                  source_value='{values[3]}' and target_system='
-                  {values[4]}' and target_attr='INSERTE VALOR CORRECTO DE
-                  target_attr';
+                  {resultSelect}
                 </code>
               </pre>
             </div>
@@ -123,20 +123,15 @@ const MapBm = () => {
               <button
                 className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
                 data-clipboard-target="#code"
+                onClick={() => handleClipboard(resultInsert)}
               >
                 Copy
               </button>
             </div>
             <div className="overflow-x-auto">
-              <pre id="code" class="text-gray-300">
+              <pre id="code" className="text-gray-300">
                 <code>
-                  insert into ESB_MAP (ID, SOURCE_SYSTEM, SOURCE_ATTR,
-                  SOURCE_VALUE, TARGET_SYSTEM, TARGET_ATTR, TARGET_VALUE,
-                  GROUP_MAP, CREATED) values (SEQ_esb_map.NextVal,'{values[1]}
-                  ','{values[2]}','{values[3]}','
-                  {values[4]}','INSERTAR VALOR DE TARGET_ATTR','INSERTAR VALOR
-                  DE TARGET_VALUE','{values[0]}',to_date('{fechaFormateada}
-                  ','DD/MM/RRRR'));
+                  {resultInsert}
                 </code>
               </pre>
             </div>
