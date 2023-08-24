@@ -9,6 +9,7 @@ import {
   UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { usePathname } from "next/navigation";
 
 // components
 import Header from "../Header/Header";
@@ -29,13 +30,13 @@ const navigation = [
   },
 ];
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Nav = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -108,12 +109,10 @@ const Nav = () => {
                               <li key={item.name}>
                                 <Link
                                   href={item.href}
-                                  className={classNames(
-                                    item.current
-                                      ? "bg-indigo-700 text-white"
-                                      : "text-indigo-200 hover:text-white hover:bg-indigo-700",
-                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                                  )}
+                                  className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-indigo-700 ${
+                                    pathname === item.href &&
+                                    "bg-indigo-700 text-white"
+                                  }`}
                                 >
                                   <item.icon
                                     className={classNames(
@@ -156,14 +155,11 @@ const Nav = () => {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
-                          className={classNames(
-                            item.current
-                              ? "bg-indigo-700 text-white"
-                              : "text-indigo-200 hover:text-white hover:bg-indigo-700",
-                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                          )}
+                          className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-indigo-700 ${
+                            pathname === item.href && "bg-indigo-700 text-white"
+                          }`}
                         >
                           <item.icon
                             className={classNames(
@@ -175,7 +171,7 @@ const Nav = () => {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -195,8 +191,11 @@ const Nav = () => {
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
             {/* Separator */}
-            <div className="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true"/>
-<Header />
+            <div
+              className="h-6 w-px bg-gray-900/10 lg:hidden"
+              aria-hidden="true"
+            />
+            <Header />
           </div>
         </div>
       </div>

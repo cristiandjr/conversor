@@ -58,7 +58,7 @@ const NavResponsive = () => {
                 <img
                   className="h-8 w-auto"
                   src="https://tailwindui.com/img/logos/mark.svg?color=white"
-                  alt="Your Company"
+                  alt="FyS"
                 />
               </div>
               <nav className="flex flex-1 flex-col">
