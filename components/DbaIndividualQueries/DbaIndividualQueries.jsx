@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const DbaIndividualQueries = () => {
   const [inputValues, setInputValues] = useState({
-    id: "",
+    id: "SEQ_esb_map.NextVal",
     sourceSystem: "",
     sourceAttr: "",
     sourceValue: "",
@@ -73,10 +73,8 @@ const DbaIndividualQueries = () => {
 
   return (
     <section>
-      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-          DBA Individual Queries
-        </span>
+      <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
+        DBA Individual Queries
       </h1>
       {/** columna */}
       <div className="w-full flex flex-wrap">
@@ -244,6 +242,7 @@ const DbaIndividualQueries = () => {
         Generar
       </button>
 
+      {/* results */}
       <div className="mt-5 w-full">
         <div className="relative w-full max-w-6xl mt-2">
           <div className="bg-black text-white p-4 rounded-md">

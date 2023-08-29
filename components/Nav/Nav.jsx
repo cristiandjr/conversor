@@ -95,11 +95,13 @@ const Nav = () => {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://img1.wsimg.com/isteam/ip/7a133380-b8e1-40a2-9d24-d16e6c92d5e1/Logo%20FyS%20-%20Original.png/:/rs=w:110,h:100,cg:true,m/cr=w:110,h:100/qt=q:95"
-                        alt="FyS Logo"
-                      />
+                      <Link href="/">
+                        <img
+                          className="h-8 w-auto"
+                          src="https://img1.wsimg.com/isteam/ip/7a133380-b8e1-40a2-9d24-d16e6c92d5e1/Logo%20FyS%20-%20Original.png/:/rs=w:110,h:100,cg:true,m/cr=w:110,h:100/qt=q:95"
+                          alt="FyS Logo"
+                        />
+                      </Link>
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -109,16 +111,16 @@ const Nav = () => {
                               <li key={item.name}>
                                 <Link
                                   href={item.href}
-                                  className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-indigo-700 ${
+                                  className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-[#AC2D34] ${
                                     pathname === item.href &&
-                                    "bg-indigo-700 text-white"
+                                    "bg-[#AC2D34] text-white"
                                   }`}
                                 >
                                   <item.icon
                                     className={classNames(
                                       item.current
                                         ? "text-white"
-                                        : "text-indigo-200 group-hover:text-white",
+                                        : "text-white group-hover:text-white",
                                       "h-6 w-6 shrink-0"
                                     )}
                                     aria-hidden="true"
@@ -143,11 +145,13 @@ const Nav = () => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-black px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://img1.wsimg.com/isteam/ip/7a133380-b8e1-40a2-9d24-d16e6c92d5e1/Logo%20FyS%20-%20Original.png/:/rs=w:110,h:100,cg:true,m/cr=w:110,h:100/qt=q:95"
-                alt="Fys Logo"
-              />
+              <Link href="/">
+                <img
+                  className="h-8 w-auto"
+                  src="https://img1.wsimg.com/isteam/ip/7a133380-b8e1-40a2-9d24-d16e6c92d5e1/Logo%20FyS%20-%20Original.png/:/rs=w:110,h:100,cg:true,m/cr=w:110,h:100/qt=q:95"
+                  alt="Fys Logo"
+                />
+              </Link>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -157,8 +161,8 @@ const Nav = () => {
                       <li key={item.name}>
                         <Link
                           href={item.href}
-                          className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-indigo-700 ${
-                            pathname === item.href && "bg-indigo-700 text-white"
+                          className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-indigo-200 hover:text-white hover:bg-[#AC2D34] ${
+                            pathname === item.href && "bg-[#AC2D34] text-white"
                           }`}
                         >
                           <item.icon

@@ -38,10 +38,8 @@ const DbaQueries = () => {
 
   return (
     <section>
-      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-          DBA Conversor
-        </span>
+      <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
+        DBA Conversor
       </h1>
       <div className="relative w-full max-w-6xl mt-2 mb-2">
         <div className="bg-black text-white p-4 rounded-md">

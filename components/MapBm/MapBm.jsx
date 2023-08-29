@@ -130,10 +130,8 @@ const MapBm = () => {
 
   return (
     <section>
-      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-          mapBm Conversor
-        </span>
+      <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
+        mapBm Conversor
       </h1>
       <div className="grid grid-cols-1 gap-2">
         <form onSubmit={handleSubmit(onSubmit)} id="formulario" method="post">
