@@ -4,9 +4,9 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
+  CodeBracketIcon,
+  CircleStackIcon,
+  TableCellsIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
@@ -15,17 +15,17 @@ import { usePathname } from "next/navigation";
 import Header from "../Header/Header";
 
 const navigation = [
-  { name: "mapBm", href: "/", icon: HomeIcon, current: true },
+  { name: "mapBm", href: "/", icon: CodeBracketIcon, current: true },
   {
     name: "DBA queries",
     href: "/dbaqueries",
-    icon: FolderIcon,
+    icon: CircleStackIcon,
     current: false,
   },
   {
     name: "DBA individual queries",
     href: "/dbaindividualqueries",
-    icon: UsersIcon,
+    icon: TableCellsIcon,
     current: false,
   },
 ];
