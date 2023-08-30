@@ -50,10 +50,10 @@ const DbaQueries = () => {
             <pre id="code" className="text-gray-300 whitespace-pre-line">
               <code>
                 <span className="block">
-                  Insert into ESB_MAP
-                  (ID,SOURCE_SYSTEM,SOURCE_ATTR,SOURCE_VALUE,TARGET_SYSTEM,TARGET_ATTR,TARGET_VALUE,GROUP_MAP,CREATED)
-                  values
-                  ('177111','Portability','portabilityStatus','notifyPortInTimeWindow','AMDOCS','portabilityStatus','POWD','GENERAL',to_date('21/11/2016','DD/MM/RRRR'));
+                  Insert into ESB_MAP <br />
+                  (ID,SOURCE_SYSTEM,SOURCE_ATTR,SOURCE_VALUE,TARGET_SYSTEM,TARGET_ATTR,TARGET_VALUE,GROUP_MAP,CREATED) <br />
+                  values <br />
+                  ('177111','Portability','portabilityStatus','notifyPortInTimeWindow','AMDOCS','portabilityStatus','POWD','GENERAL',to_date('21/11/2016','DD/MM/RRRR')); <br />
                 </span>
               </code>
             </pre>

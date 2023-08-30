@@ -131,9 +131,9 @@ const MapBm = () => {
   return (
     <section>
       <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
-        mapBm Conversor
+        MapBm Conversor
       </h1>
-      <div className="grid grid-cols-1 gap-2">
+      <div className="relative w-full max-w-6xl mt-2 mb-2">
         <form onSubmit={handleSubmit(onSubmit)} id="formulario" method="post">
           <div>
             <div className="relative w-full max-w-6xl mt-2">
