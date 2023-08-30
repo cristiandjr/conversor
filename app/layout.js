@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Conversor',
-  description: 'Creado con nextjs',
+  description: 'Creado con FyS',
 }
 
 export default function RootLayout({ children }) {

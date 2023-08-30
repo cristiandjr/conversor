@@ -139,7 +139,7 @@ const MapBm = () => {
             <div className="relative w-full max-w-6xl mt-2">
               <div className="bg-black text-white p-4 rounded-md">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-gray-400">Examples Code:</span>
+                  <span className="text-gray-400">Example code getValueWithDefault:</span>
                 </div>
                 <div className="overflow-x-auto">
                   <pre id="code" className="text-gray-300 whitespace-pre-line">
@@ -148,6 +148,19 @@ const MapBm = () => {
                         mapBm:getValueWithDefault("AVERIAS", "CRM",
                         "XA_GUARANTEE", 'config_item', "TOA", "0")
                       </span>
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+            <div className="relative w-full max-w-6xl mt-2">
+              <div className="bg-black text-white p-4 rounded-md">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-gray-400">Example code getValue:</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <pre id="code" className="text-gray-300 whitespace-pre-line">
+                    <code>
                       <span className="block">
                         mapBm:getValue('GENERAL','Portability','portabilityStatus',
                         'notifyPortInTimeWindow', 'AMDOCS')

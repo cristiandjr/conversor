@@ -13,6 +13,7 @@ const DbaIndividualQueries = () => {
     targetValue: "",
     groupMap: "",
     created: "",
+    defaultValue: "string"
   });
 
   const [generatedMapBm, setGeneratedMapBm] = useState("");
@@ -53,7 +54,7 @@ const DbaIndividualQueries = () => {
       <amd:target_system>${values.targetSystem}</amd:target_system>
       <amd:source_value>${values.sourceValue}</amd:source_value>
       <amd:group>${values.groupMap}</amd:group>
-      <amd:defaultValue>string</amd:defaultValue>
+      <amd:defaultValue>${values.defaultValue}</amd:defaultValue>
     </amd:getValueWithDefault>
     `;
     return mapBmContent;
@@ -215,6 +216,24 @@ const DbaIndividualQueries = () => {
         </div>
         <div className="w-1/3 p-1">
           <label
+            htmlFor="defaultValue"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            DEFAULT_VALUE <span className="text-xs">(solo para mapBm)</span> 
+          </label>
+          <div className="mt-2">
+            <input
+              type="text"
+              name="defaultValue"
+              id="defaultValue"
+              className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              onChange={handleInputChange}
+              placeholder="Ej: valor/vació o queda por default string"
+            />
+          </div>
+        </div>
+        <div className="w-1/3 p-1">
+          <label
             htmlFor="created"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
@@ -226,7 +245,7 @@ const DbaIndividualQueries = () => {
               name="created"
               id="created"
               className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              placeholder={`Example: ${fechaFormateada} or sysdate`}
+              placeholder={`Ej: ${fechaFormateada} o queda por default sysdate`}
             />
           </div>
         </div>
