@@ -4,7 +4,6 @@ import { handleClipboard } from "@/utils/scripts/clipboard";
 import { useForm } from "react-hook-form";
 
 const MultipleMapBm = () => {
-  const [result, setResult] = useState("");
   const [results, setResults] = useState([]);
   const {
     register,
@@ -13,12 +12,11 @@ const MultipleMapBm = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const mapBm = document.getElementById("mapBm").value;
-    const mapBmInput = data.mapBm.split("\n"); // dividir el texto en líneas
+    const mapBmInput = data.mapBm.split("\n"); // dividir el texto en lines
     const resultsArray = [];
 
     mapBmInput.forEach((mapBmInputLine) => {
-      // Procesar cada línea (mapBmInputLine) aquí y generar los resultados
+      // prceso cada linea (mapBmInputLine) aca y genero los results
       const matches = mapBmInputLine.match(/"(.*?)"|'(.*?)'/g);
 
       if (matches) {
@@ -63,80 +61,11 @@ const MultipleMapBm = () => {
       }
     });
 
-    // Agregar los resultados al estado
+    // added resultados al estado
     setResults(resultsArray);
 
-    // Limpiar el campo de entrada después de agregar el resultado
+    // limnpiar campo cada vez q agrego nuevo registro
     // reset();
-
-    // Agregar el resultado actual a la lista de resultados
-    const newResult = resultsArray[resultsArray.length - 1]; // Tomar el último resultado
-    setResult(
-      <div className="resultado">
-        {/** mapBm */}
-        <div className="relative w-full max-w-6xl mt-2">
-          <div className="bg-black text-white p-4 rounded-md">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-400">REQUEST Code:</span>
-              <button
-                className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                data-clipboard-target="#code"
-                onClick={() => handleClipboard(newResult.mapBm)}
-              >
-                Copy
-              </button>
-            </div>
-            <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>{newResult.mapBm}</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-
-        {/** select */}
-        <div className="relative w-full max-w-6xl mt-2">
-          <div className="bg-black text-white p-4 rounded-md">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-400">SELECT Code:</span>
-              <button
-                className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                data-clipboard-target="#code"
-                onClick={() => handleClipboard(newResult.select)}
-              >
-                Copy
-              </button>
-            </div>
-            <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>{newResult.select}</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-
-        {/** insert */}
-        <div className="relative w-full max-w-6xl mt-2">
-          <div className="bg-black text-white p-4 rounded-md">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-400">INSERT Code:</span>
-              <button
-                className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                data-clipboard-target="#code"
-                onClick={() => handleClipboard(newResult.insert)}
-              >
-                Copy
-              </button>
-            </div>
-            <div className="overflow-x-auto">
-              <pre id="code" className="text-gray-300 whitespace-pre-line">
-                <code>{newResult.insert}</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   return (
@@ -144,10 +73,10 @@ const MultipleMapBm = () => {
       <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
         Multiple MapBm
       </h1>
-      <div className="relative w-full max-w-6xl mt-2 mb-2">
+      <div className="relative w-full mt-2 mb-2">
         <form onSubmit={handleSubmit(onSubmit)} id="formulario" method="post">
           <div>
-            <div className="relative w-full max-w-6xl mt-2">
+            <div className="relative w-full mt-2">
               <div className="bg-black text-white p-4 rounded-md">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400">
@@ -166,7 +95,7 @@ const MultipleMapBm = () => {
                 </div>
               </div>
             </div>
-            <div className="relative w-full max-w-6xl mt-2">
+            <div className="relative w-full mt-2">
               <div className="bg-black text-white p-4 rounded-md">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400">Example code getValue:</span>
@@ -218,14 +147,76 @@ const MultipleMapBm = () => {
         <div id="resultado">
           {results.map((result, index) => (
             <div key={index} className="mb-4">
-              <div className="bg-black text-white p-4 rounded-md mt-5">
-                <pre>{result.mapBm}</pre>
+              {/** mapBm */}
+              <div className="relative w-full mt-2">
+                <div className="bg-black text-white p-4 rounded-md">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-400">REQUEST Code:</span>
+                    <button
+                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+                      data-clipboard-target="#code"
+                      onClick={() => handleClipboard(result.mapBm)}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <pre
+                      id="code"
+                      className="text-gray-300 whitespace-pre-line"
+                    >
+                      <code>{result.mapBm}</code>
+                    </pre>
+                  </div>
+                </div>
               </div>
-              <div className="bg-black text-white p-4 rounded-md mt-5">
-                <pre>{result.select}</pre>
+
+              {/** select */}
+              <div className="relative w-full mt-2">
+                <div className="bg-black text-white p-4 rounded-md">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-400">SELECT Code:</span>
+                    <button
+                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+                      data-clipboard-target="#code"
+                      onClick={() => handleClipboard(result.select)}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <pre
+                      id="code"
+                      className="text-gray-300 whitespace-pre-line"
+                    >
+                      <code>{result.select}</code>
+                    </pre>
+                  </div>
+                </div>
               </div>
-              <div className="bg-black text-white p-4 rounded-md mt-5">
-                <pre>{result.insert}</pre>
+
+              {/** insert */}
+              <div className="relative w-full mt-2">
+                <div className="bg-black text-white p-4 rounded-md">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-400">INSERT Code:</span>
+                    <button
+                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
+                      data-clipboard-target="#code"
+                      onClick={() => handleClipboard(result.insert)}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <pre
+                      id="code"
+                      className="text-gray-300 whitespace-pre-line"
+                    >
+                      <code>{result.insert}</code>
+                    </pre>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

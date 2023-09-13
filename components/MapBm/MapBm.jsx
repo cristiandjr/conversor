@@ -63,7 +63,7 @@ const MapBm = () => {
     setResult(
       <div className="resultado">
         {/** mapBm */}
-        <div className="relative w-full max-w-6xl mt-2">
+        <div className="relative w-full mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
               <span className="text-gray-400">REQUEST Code:</span>
@@ -84,7 +84,7 @@ const MapBm = () => {
         </div>
 
         {/** select */}
-        <div className="relative w-full max-w-6xl mt-2">
+        <div className="relative w-full mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
               <span className="text-gray-400">SELECT Code:</span>
@@ -105,7 +105,7 @@ const MapBm = () => {
         </div>
 
         {/** insert */}
-        <div className="relative w-full max-w-6xl mt-2">
+        <div className="relative w-full mt-2">
           <div className="bg-black text-white p-4 rounded-md">
             <div className="flex justify-between items-center mb-2">
               <span className="text-gray-400">INSERT Code:</span>
@@ -133,10 +133,10 @@ const MapBm = () => {
       <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
         MapBm Conversor
       </h1>
-      <div className="relative w-full max-w-6xl mt-2 mb-2">
+      <div className="relative w-full mt-2 mb-2">
         <form onSubmit={handleSubmit(onSubmit)} id="formulario" method="post">
           <div>
-            <div className="relative w-full max-w-6xl mt-2">
+            <div className="relative w-full mt-2">
               <div className="bg-black text-white p-4 rounded-md">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400">Example code getValueWithDefault:</span>
@@ -153,7 +153,7 @@ const MapBm = () => {
                 </div>
               </div>
             </div>
-            <div className="relative w-full max-w-6xl mt-2">
+            <div className="relative w-full mt-2">
               <div className="bg-black text-white p-4 rounded-md">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400">Example code getValue:</span>

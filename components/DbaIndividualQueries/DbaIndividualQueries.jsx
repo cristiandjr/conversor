@@ -261,7 +261,7 @@ const DbaIndividualQueries = () => {
       {/* results */}
       <div className="mt-5 w-full">
         {generatedMapBmHistory.map((mapBm, index) => (
-          <div className="relative w-full max-w-6xl mt-2" key={index}>
+          <div className="relative w-full mt-2" key={index}>
             <div className="bg-black text-white p-4 rounded-md">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-gray-400">MAPBM Code:</span>
@@ -284,7 +284,7 @@ const DbaIndividualQueries = () => {
       </div>
       <div className="mt-2 w-full">
         {generatedInsertHistory.map((insert, index) => (
-          <div className="relative w-full max-w-6xl mt-2" key={index}>
+          <div className="relative w-full mt-2" key={index}>
             <div className="bg-black text-white p-4 rounded-md">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-gray-400">INSERT Code:</span>

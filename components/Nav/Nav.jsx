@@ -8,6 +8,7 @@ import {
   CircleStackIcon,
   TableCellsIcon,
   XMarkIcon,
+  DocumentDuplicateIcon
 } from "@heroicons/react/24/outline";
 import { usePathname } from "next/navigation";
 
@@ -15,11 +16,11 @@ import { usePathname } from "next/navigation";
 import Header from "../Header/Header";
 
 const navigation = [
-  { name: "mapBm", href: "/", icon: CodeBracketIcon, current: true },
+  { name: "mapBm", href: "/", icon: CodeBracketIcon, current: false },
   {
     name: "Multiple mapBm",
     href: "/multiplemapbm",
-    icon: CircleStackIcon,
+    icon: DocumentDuplicateIcon,
     current: false,
   },
   {
