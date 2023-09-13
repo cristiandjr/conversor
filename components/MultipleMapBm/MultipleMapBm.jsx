@@ -145,81 +145,89 @@ const MultipleMapBm = () => {
           </button>
         </form>
         <div id="resultado">
-          {results.map((result, index) => (
-            <div key={index} className="mb-4">
-              {/** mapBm */}
-              <div className="relative w-full mt-2">
-                <div className="bg-black text-white p-4 rounded-md">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-400">REQUEST Code:</span>
-                    <button
-                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                      data-clipboard-target="#code"
-                      onClick={() => handleClipboard(result.mapBm)}
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <pre
-                      id="code"
-                      className="text-gray-300 whitespace-pre-line"
-                    >
-                      <code>{result.mapBm}</code>
-                    </pre>
-                  </div>
+          {/* REQUEST Code */}
+          <div className="mb-4 mt-4 relative bg-black text-white p-4 rounded-md">
+            <h2 className="text-xl font-semibold text-gray-400">
+              REQUEST Code:
+            </h2>
+            <button
+              className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md absolute top-0 right-0 mt-2"
+              data-clipboard-target="#request-code-all"
+              onClick={() =>
+                handleClipboard(
+                  results.map((result) => result.mapBm).join("\n")
+                )
+              }
+            >
+              Copy All
+            </button>
+            <pre
+              id="request-code-all"
+              className="text-gray-300 whitespace-pre-line"
+            >
+              {results.map((result, index) => (
+                <div key={index} className="relative w-full mt-2">
+                  <code>{result.mapBm}</code>
                 </div>
-              </div>
+              ))}
+            </pre>
+          </div>
 
-              {/** select */}
-              <div className="relative w-full mt-2">
-                <div className="bg-black text-white p-4 rounded-md">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-400">SELECT Code:</span>
-                    <button
-                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                      data-clipboard-target="#code"
-                      onClick={() => handleClipboard(result.select)}
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <pre
-                      id="code"
-                      className="text-gray-300 whitespace-pre-line"
-                    >
-                      <code>{result.select}</code>
-                    </pre>
-                  </div>
+          {/* SELECT Code */}
+          <div className="mb-4 relative bg-black text-white p-4 rounded-md">
+            <h2 className="text-xl font-semibold text-gray-400">
+              SELECT Code:
+            </h2>
+            <button
+              className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md absolute top-0 right-0 mt-2"
+              data-clipboard-target="#select-code-all"
+              onClick={() =>
+                handleClipboard(
+                  results.map((result) => result.select).join("\n")
+                )
+              }
+            >
+              Copy All
+            </button>
+            <pre
+              id="select-code-all"
+              className="text-gray-300 whitespace-pre-line"
+            >
+              {results.map((result, index) => (
+                <div key={index} className="relative w-full mt-2">
+                  <code>{result.select}</code>
                 </div>
-              </div>
+              ))}
+            </pre>
+          </div>
 
-              {/** insert */}
-              <div className="relative w-full mt-2">
-                <div className="bg-black text-white p-4 rounded-md">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-400">INSERT Code:</span>
-                    <button
-                      className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md"
-                      data-clipboard-target="#code"
-                      onClick={() => handleClipboard(result.insert)}
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <pre
-                      id="code"
-                      className="text-gray-300 whitespace-pre-line"
-                    >
-                      <code>{result.insert}</code>
-                    </pre>
-                  </div>
+          {/* INSERT Code */}
+          <div className="mb-4 relative bg-black text-white p-4 rounded-md">
+            <h2 className="text-xl font-semibold text-gray-400">
+              INSERT Code:
+            </h2>
+            <button
+              className="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md absolute top-0 right-0 mt-2"
+              data-clipboard-target="#insert-code-all"
+              onClick={() =>
+                handleClipboard(
+                  results.map((result) => result.insert).join("\n")
+                )
+              }
+            >
+              Copy All
+            </button>
+            <pre
+              id="insert-code-all"
+              className="text-gray-300 whitespace-pre-line"
+            >
+              {results.map((result, index) => (
+                <div key={index} className="relative w-full mt-2">
+                  <code>{result.insert}</code>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))}
+            </pre>
+          </div>
         </div>
       </div>
     </section>
