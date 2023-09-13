@@ -17,6 +17,12 @@ import Header from "../Header/Header";
 const navigation = [
   { name: "mapBm", href: "/", icon: CodeBracketIcon, current: true },
   {
+    name: "Multiple mapBm",
+    href: "/multiplemapbm",
+    icon: CircleStackIcon,
+    current: false,
+  },
+  {
     name: "DBA queries",
     href: "/dbaqueries",
     icon: CircleStackIcon,

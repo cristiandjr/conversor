@@ -41,7 +41,7 @@ const DbaQueries = () => {
       <h1 className="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-red-900">
         DBA Conversor
       </h1>
-      <div className="relative w-full max-w-6xl mt-2 mb-2">
+      <div className="relative w-full mt-2 mb-2">
         <div className="bg-black text-white p-4 rounded-md">
           <div className="flex justify-between items-center mb-2">
             <span className="text-gray-400">Example Code:</span>
@@ -60,39 +60,41 @@ const DbaQueries = () => {
           </div>
         </div>
       </div>
-      <form method="post" onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <textarea
-            id="sqlQueries"
-            {...register("sqlQueries", {
-              required: {
-                value: true,
-                message: "Campo requerido",
-              },
-              minLength: {
-                value: 15,
-                message: "Minimo como estan los campos de example",
-              },
-            })}
-            rows={4}
-            className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          />
-          {errors.sqlQueries && (
-            <span className="text-red-600 font-bold">
-              {errors.sqlQueries.message}
-            </span>
-          )}
-        </div>
-        <button
-          type="submit"
-          className="mt-2 p-2 border-2 font-semibold tracking-widest border-black rounded-sm ease-in duration-300 hover:bg-black hover:text-white"
-        >
-          Generar
-        </button>
-      </form>
+      <div className="relative w-full mt-2 mb-2">
+        <form method="post" onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <textarea
+              id="sqlQueries"
+              {...register("sqlQueries", {
+                required: {
+                  value: true,
+                  message: "Campo requerido",
+                },
+                minLength: {
+                  value: 15,
+                  message: "Minimo como estan los campos de example",
+                },
+              })}
+              rows={4}
+              className="block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+            {errors.sqlQueries && (
+              <span className="text-red-600 font-bold">
+                {errors.sqlQueries.message}
+              </span>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="mt-2 p-2 border-2 font-semibold tracking-widest border-black rounded-sm ease-in duration-300 hover:bg-black hover:text-white"
+          >
+            Generar
+          </button>
+        </form>
+      </div>
       {sqlResult && (
         <div id="resultado">
-          <div className="relative w-full max-w-6xl mt-2">
+          <div className="relative w-full mt-2">
             <div className="bg-black text-white p-4 rounded-md">
               <div className="flex justify-between items-center mb-2">
                 <span className="text-gray-400">INSERT Code:</span>
